@@ -1,4 +1,4 @@
-package frameWork;
+package ap.finalProject.mapPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,7 @@ public class EditorFrame extends JFrame {
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
         // frame setup:
         this.setLayout(null); // im ganna go with a null manager first ...
-        this.setSize(1000,1000);
+        //this.setSize(1000,1000);
         this.setResizable(true);
         this.setTitle("Map Editor");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -31,8 +31,9 @@ public class EditorFrame extends JFrame {
         //mapPanel.setBackground(Color.yellow); // $$$ just a test line ...
         mapPanel.setSize(this.getWidth()/4*3,this.getHeight());
         mapPanel.setLocation(this.getWidth()/4,0);
-        this.addKeyListener(mapPanel.getCameraManager());
+        //this.addKeyListener(mapPanel.getCameraManager());
         this.addKeyListener(mapPanel.getCreator());
+        this.addKeyListener(mapPanel.getPlacer());
         this.add(mapPanel);
         // setting up the minimap panel:
         minimapPanel = new Minimap(mapPanel);
@@ -42,16 +43,40 @@ public class EditorFrame extends JFrame {
         this.add(minimapPanel);
         // setting up the tree panel:
         treePanel = new JPanel(null);
-        treePanel.setBackground(Color.cyan);
-        treePanel.setSize(this.getWidth()/4,this.getHeight()/2);
+        //treePanel.setBackground(Color.cyan);
+        treePanel.setSize(this.getWidth()/4,this.getHeight()/4*3);
         treePanel.setLocation(0,this.getHeight()/4);
+
+
+            JTreetmp jt = new JTreetmp();
+            jt.setBackground(Color.WHITE);
+            mapPanel.setjtree(jt);
+//                JScrollPane panelPane = new JScrollPane(jt);
+//                panelPane.setSize(new Dimension(200,400));
+
+            MenuExp me = new MenuExp();
+            this.setJMenuBar(me.getMenubar());
+
+
+            JScrollPane scrollPane = new JScrollPane(jt);
+            scrollPane.setSize(new Dimension(this.getWidth()/4,this.getHeight()/4*3));
+            //JScrollBar bar = scrollPane.getVerticalScrollBar();
+//                bar.setPreferredSize(new Dimension(20, 0));
+//                scrollPane.setHorizontalScrollBar(bar);
+            jt.setFont(new Font("Arial",Font.PLAIN,100));
+
+            scrollPane.setBackground(Color.WHITE);
+            treePanel.add(scrollPane);
+//                myFrame.add(scrollPane,BorderLayout.WEST);
+
+
         this.add(treePanel);
-        // setting up the image panel:
-        selectedObjectPanel = new JPanel(null);
-        selectedObjectPanel.setBackground(Color.magenta);
-        selectedObjectPanel.setSize(this.getWidth()/4,this.getHeight()/4);
-        selectedObjectPanel.setLocation(0,this.getHeight()/4*3);
-        this.add(selectedObjectPanel);
+//        // setting up the image panel:
+//        selectedObjectPanel = new JPanel(null);
+//        selectedObjectPanel.setBackground(Color.magenta);
+//        selectedObjectPanel.setSize(this.getWidth()/4,this.getHeight()/4);
+//        selectedObjectPanel.setLocation(0,this.getHeight()/4*3);
+//        this.add(selectedObjectPanel);
 
 
         refreshMini.start();
@@ -69,11 +94,12 @@ public class EditorFrame extends JFrame {
         minimapPanel.setSize(this.getWidth()/4,this.getHeight()/4);
         minimapPanel.setLocation(0,0);
 
-        treePanel.setSize(this.getWidth()/4,this.getHeight()/2);
+
+        treePanel.setSize(this.getWidth()/4,this.getHeight()/4*3);
         treePanel.setLocation(0,this.getHeight()/4);
 
-        selectedObjectPanel.setSize(this.getWidth()/4,this.getHeight()/4);
-        selectedObjectPanel.setLocation(0,this.getHeight()/4*3);
+//        selectedObjectPanel.setSize(this.getWidth()/4,this.getHeight()/4);
+//        selectedObjectPanel.setLocation(0,this.getHeight()/4*3);
     }
 
     Timer refreshMini = new Timer(100,e ->{

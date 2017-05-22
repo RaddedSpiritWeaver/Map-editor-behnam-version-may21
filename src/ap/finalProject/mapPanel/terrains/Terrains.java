@@ -5,4 +5,11 @@ package ap.finalProject.mapPanel.terrains;
  */
 public enum Terrains
 {
+    BEACH,
+    DEEP_WATER,
+    LAWN,
+    SHALLOW_WATER,
+    MOUNTAIN,
+    PEAK,
+    TILE
 }

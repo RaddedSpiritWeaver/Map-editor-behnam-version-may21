@@ -1,4 +1,6 @@
-package aut.ap.mapPanel;
+package ap.finalProject.mapPanel;
+
+import ap.finalProject.mapPanel.terrains.Terrains;
 
 import java.awt.*;
 import java.util.Random;
@@ -9,22 +11,17 @@ import java.util.Random;
 public class Tile
 {
 
-    private int x,y;
-
-    private static Random random;
-    static {
-        random = new Random(System.currentTimeMillis());
-    }
-
-    private Color color;
+    protected int x,y;
+    protected Color color;
+    protected Terrains terrainType;
 
     public Tile(int x, int y)
     {
         this.x = x;
         this.y = y;
 
-        color = new Color(random.nextInt(32)* 8 , random.nextInt(32)* 8,random.nextInt(32)* 8,210);
-//        color = Color.white;
+        terrainType = Terrains.TILE;
+        color = Color.WHITE;
     }
 
     public Polygon getPolygon(int xRoot, int yRoot, int size, int cotang)
@@ -44,9 +41,9 @@ public class Tile
          return polygon;
     }
 
-    public void setColor(Color color)
+    public Terrains getTerrainType()
     {
-        this.color = color;
+        return terrainType;
     }
 
     public Color getColor()

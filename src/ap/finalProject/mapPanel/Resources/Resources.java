@@ -5,4 +5,10 @@ package ap.finalProject.mapPanel.Resources;
  */
 public enum Resources
 {
+    GOLD_MINE,
+    IRON_QUARRY,
+    TREE,
+    DEEP_WATER_FISH,
+    SHALLOW_WATER_FISH,
+    RESOURCE
 }

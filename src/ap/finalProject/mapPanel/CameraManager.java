@@ -1,4 +1,4 @@
-package aut.ap.mapPanel;
+package ap.finalProject.mapPanel;
 
 import java.awt.event.*;
 

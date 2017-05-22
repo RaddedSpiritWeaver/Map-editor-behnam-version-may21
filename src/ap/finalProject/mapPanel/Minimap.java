@@ -1,6 +1,4 @@
-package frameWork;
-
-import mapPanel.Tile;
+package ap.finalProject.mapPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +35,7 @@ public class Minimap extends JPanel{
         float thickness =  1;
         Stroke oldStroke = g2.getStroke();
         g2.setStroke(new BasicStroke(thickness));
-        g2.setColor(Color.yellow);
+        g2.setColor(Color.red);
         g2.drawRect((source.xRoot-1)*tileSize,(source.yRoot-1 )*tileSize/4,sizeWidth,sizeHeight); // inja source.root ke migirim bayad kam she az on rooty ke to paint midim ... (- on biyad inja)
         g2.setStroke(oldStroke);
     }
